@@ -15,6 +15,13 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 10
 
+bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/wallpaper.sh
+
+
+
+
+
+
 # Aparência das janelas: título centralizado e bordas finas
 # Remove barra de título grande nas janelas tiling e usa só borda fina
 default_border pixel 2
@@ -74,7 +81,12 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 # dmenu com fundo preto e texto branco
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff'
+bindsym $mod+d exec dmenu_run -l 10 -i -p "Run:" \
+-nb "#000000" -nf "#aaaaaa" \
+-sb "#111111" -sf "#00ff00" \
+-fn "monospace-10"
+
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -210,5 +222,4 @@ bar {
 }
 
 # Compositor com blur para terminais (picom)
-exec --no-startup-id picom --experimental-backends
-exec /usr/libexec/polkit-mate-authentication-agent-1 &
+exec /home/vibewill/.config/i3/autostart.sh 
